@@ -136,6 +136,18 @@ mvn clean test -DbaseUrl=https://automationexercise.com/
 
 Defaults come from `src/main/resources/environment.properties` and `src/main/resources/execution.properties`. Java system properties passed with `-D` take precedence over those defaults.
 
+### Automatic retries
+
+Failed TestNG tests are retried automatically through `RetryListener` and `RetryAnalyzer`. Set `maxTestAttempts` in `src/main/resources/execution.properties`, or override it on the command line:
+
+```bash
+mvn clean test -DmaxTestAttempts=3
+```
+
+`maxTestAttempts` is the **total number of attempts**, including the first run. The default is `2` (one retry); `1` disables retries, and `3` allows two retries. Explicitly assigned custom retry analyzers are preserved.
+
+Verified locally with TestNG 7.11.0 using an intentionally failing temporary test: the default ran twice, `1` ran once, and `3` ran three times. The repository's Maven/Surefire configuration also ran that test three times with `-DmaxTestAttempts=3`. The temporary test was removed after verification; the expected final failure was not reported as a passing suite.
+
 ### Sample execution output
 
 This console capture was supplied with the project and shows the visible passing TestNG results from the same execution represented in the Allure report below.
