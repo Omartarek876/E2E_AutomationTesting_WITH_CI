@@ -1,4 +1,4 @@
-# Automation Testing with CI Pipeline
+# E2E_AutomationTesting_WITH_CI
 
 Java-based UI automation for [AutomationExercise](https://automationexercise.com/). The project demonstrates a maintainable Selenium framework built around a **fluent Page Object Model (POM) with method chaining**, data-driven TestNG scenarios, reusable browser utilities, Allure reporting, and CI configuration.
 
@@ -43,7 +43,7 @@ The current suite covers authentication, registration, product catalog and detai
 | Contact | Submit the contact form with valid details and file upload |
 | Storefront | Subscribe with a valid email |
 
-At the time these screenshots were supplied, the Allure run contained **20 test cases with a 100% pass rate**. This is a saved execution result, not a live CI status indicator.
+These screenshots come from a saved execution result, not a live CI status indicator.
 
 ## Architecture
 
@@ -71,7 +71,7 @@ The Page Object Model uses a fluent design and method chaining: page actions ret
 .
 ├── .github/
 │   └── workflows/
-│       └── CI.yml.txt                    # CI workflow definition (see CI note below)
+│       └── CI.yml                        # CI workflow definition
 ├── docs/
 │   └── images/
 │       ├── test-execution-console.png    # Supplied TestNG console screenshot
@@ -168,9 +168,9 @@ The local report entry point is `target/allure-report/index.html`. The `target/`
 
 ### Allure report screenshots
 
-The overview shows 20 test cases and a 100% pass rate. The other views show the suite/test steps, status and severity graphs, package breakdown, and feature totals.
+The overview shows the suite passing. The other views show the suite/test steps, status and severity graphs, package breakdown, and feature totals.
 
-![Allure report overview showing 20 test cases and a 100% pass rate](docs/images/allure-overview.png)
+![Allure report overview showing a passing run](docs/images/allure-overview.png)
 
 <details>
 <summary>More Allure report views</summary>
@@ -195,6 +195,4 @@ The overview shows 20 test cases and a 100% pass rate. The other views show the 
 
 ## CI configuration
 
-The repository includes a GitHub Actions workflow definition in `.github/workflows/CI.yml.txt`. Its configuration is set up for pushes, pull requests, and manual dispatch; Java 21 on Ubuntu; `mvn clean test`; Allure report generation; and upload of test and report artifacts for 14 days.
-
-**Activation note:** GitHub Actions discovers workflow files ending in `.yml` or `.yaml` under `.github/workflows/`. The current file has an additional `.txt` extension, so GitHub will not run it automatically until it is renamed to a supported extension. See the [GitHub Actions workflow syntax documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax).
+The repository includes a GitHub Actions workflow in `.github/workflows/CI.yml`. It runs on pushes, pull requests, and manual dispatch; Java 21 on Ubuntu; `mvn clean test`; Allure report generation; and upload of test and report artifacts for 14 days.
