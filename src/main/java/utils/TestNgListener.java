@@ -1,6 +1,7 @@
 package utils;
 
 import io.qameta.allure.*;
+import io.qameta.allure.util.PropertiesUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -105,7 +106,7 @@ public class TestNgListener implements ISuiteListener, ITestListener, IInvokedMe
 
     @Override
     public void alter(List<XmlSuite> suites) {
-        String projectName = System.getProperty("allure.suite.name", "DefaultProjectName");
+        String projectName = PropertiesUtils.loadAllureProperties().getProperty("allure.suite.name", "DefaultProjectName");
 
         for (XmlSuite suite : suites) {
             suite.setName(projectName);
