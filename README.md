@@ -87,7 +87,8 @@ The Page Object Model uses a fluent design and method chaining: page actions ret
 │   │   │   └── utils/                    # Driver, actions, waits, config, data, listener
 │   │   └── resources/
 │   │       ├── environment.properties     # Base URL and browser settings
-│   │       └── execution.properties      # Wait and execution settings
+│   │       ├── execution.properties       # Wait and execution settings
+│   │       └── allure.properties          # Allure results directory and suite name
 │   └── test/
 │       ├── java/
 │       │   ├── support/                  # Test-data helpers
@@ -155,6 +156,8 @@ This console capture was supplied with the project and shows the visible passing
 ![TestNG execution output showing passing scenarios](docs/images/test-execution-console.png)
 
 ## Allure report
+
+Allure reporting is configured in `src/main/resources/allure.properties` (results directory and suite name); command-line `-D` overrides take precedence.
 
 TestNG and Surefire output is written to `target/surefire-reports/`. Allure results are written to `target/allure-results/`, and the generated HTML report is written to `target/allure-report/`.
 
